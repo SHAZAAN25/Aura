@@ -2,8 +2,8 @@
 
 ## Report a Vulnerability
 
-If you found a security vulnerability in Haystack, send a message to
-[security@deepset.ai](mailto:security@deepset.ai).
+If you found a security vulnerability in Aura, please send a message to
+[MOHAMMEDSHAZAAN85@GMAIL.COM](mailto:MOHAMMEDSHAZAAN85@GMAIL.COM) or open a private security advisory on GitHub at [SHAZAAN25/Aura Security Advisories](https://github.com/SHAZAAN25/Aura/security/advisories).
 
 In your message, please include:
 

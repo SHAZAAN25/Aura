@@ -5,11 +5,14 @@ build-backend = "hatchling.build"
 [project]
 name = "haystack-ai"
 dynamic = ["version"]
-description = "LLM framework to build customizable, production-ready LLM applications. Connect components (models, vector DBs, file converters) to pipelines or agents that can interact with your data."
+description = "Advanced LLM orchestration and high-performance Retrieval-Augmented Generation (RAG) pipeline architecture."
 readme = "README.md"
 license = "Apache-2.0"
 requires-python = ">=3.9"
-authors = [{ name = "deepset.ai", email = "malte.pietsch@deepset.ai" }]
+authors = [
+  { name = "Mohammed Shazaan Aarish", email = "MOHAMMEDSHAZAAN85@GMAIL.COM" },
+  { name = "deepset.ai", email = "malte.pietsch@deepset.ai" }
+]
 keywords = [
   "BERT",
   "QA",
@@ -185,11 +188,11 @@ sync = "./.github/utils/pydoc-markdown.sh {args}"
 delete-outdated = "python ./.github/utils/delete_outdated_docs.py {args}"
 
 [project.urls]
-"CI: GitHub" = "https://github.com/deepset-ai/haystack/actions"
-"Docs: RTD" = "https://haystack.deepset.ai/overview/intro"
-"GitHub: issues" = "https://github.com/deepset-ai/haystack/issues"
-"GitHub: repo" = "https://github.com/deepset-ai/haystack"
-Homepage = "https://github.com/deepset-ai/haystack"
+"CI: GitHub" = "https://github.com/SHAZAAN25/Aura/actions"
+"Docs" = "https://github.com/SHAZAAN25/Aura#readme"
+"GitHub: issues" = "https://github.com/SHAZAAN25/Aura/issues"
+"GitHub: repo" = "https://github.com/SHAZAAN25/Aura"
+Homepage = "https://github.com/SHAZAAN25/Aura"
 
 [tool.hatch.version]
 path = "VERSION.txt"

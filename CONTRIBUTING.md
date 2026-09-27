@@ -1,4 +1,4 @@
-# Contributing to Haystack
+# Contributing to Aura
 
 First off, thanks for taking the time to contribute! :blue_heart:
 
@@ -8,11 +8,11 @@ the relevant section before making your contribution. It will make it a lot easi
 and smooth out the experience for all involved. The community looks forward to your contributions!
 
 > [!TIP]
-> If you like Haystack but just don't have time to contribute, that's fine. There are other easy ways to support the
+> If you like Aura but just don't have time to contribute, that's fine. There are other easy ways to support the
 > project and show your appreciation, which we would also be very happy about:
-> - Star this repository
-> - Tweet about it
-> - Mention Haystack at local meetups and tell your friends/colleagues
+> - Star this repository: [SHAZAAN25/Aura](https://github.com/SHAZAAN25/Aura)
+> - Share it on LinkedIn, Twitter / X
+> - Mention Aura at local tech meetups and share with colleagues
 
 **Table of Contents**
 
@@ -45,7 +45,7 @@ and smooth out the experience for all involved. The community looks forward to y
 ## Code of Conduct
 
 This project and everyone participating in it is governed by our [Code of Conduct](code_of_conduct.txt).
-By participating, you are expected to uphold this code. Please report unacceptable behavior to haystack@deepset.ai.
+By participating, you are expected to uphold this code. Please report unacceptable behavior to MOHAMMEDSHAZAAN85@GMAIL.COM.
 
 ## I Have a Question
 
@@ -85,7 +85,7 @@ following steps in advance to help us fix any potential bug as fast as possible.
 
 > [!IMPORTANT]
 > You must never report security-related issues, vulnerabilities, or bugs, including sensitive information to the issue
-> tracker, or elsewhere in public. Instead, sensitive bugs must be reported using [this link](https://github.com/deepset-ai/haystack/security/advisories/new).
+> tracker, or elsewhere in public. Instead, sensitive bugs must be reported using [this link](https://github.com/SHAZAAN25/Aura/security/advisories/new).
 >
 
 We use GitHub issues to track bugs and errors. If you run into an issue with the project:
@@ -180,15 +180,14 @@ You won't be able to make changes directly to this repo, so the first step is to
 Once your fork is ready, you can clone a local copy with:
 
 ```console
-$ git clone https://github.com/YOUR-USERNAME/haystack
+$ git clone https://github.com/YOUR-USERNAME/Aura
 ```
 
 If everything worked, you should be able to do something like this (the output might be different):
 
 ```console
-$ cd haystack
+$ cd Aura
 $ hatch version
-2.3.0-rc0
 ```
 
 Last, install the pre-commit hooks with:

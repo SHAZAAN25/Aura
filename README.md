@@ -1,129 +1,304 @@
-<div align="center">
-  <a href="https://haystack.deepset.ai/"><img src="https://raw.githubusercontent.com/deepset-ai/haystack/main/docs/img/banner.png" alt="Green logo of a stylized white 'H' with the text 'Haystack, by deepset.' Abstract green and yellow diagrams in the background."></a>
+<p align="center">
+  <img src="docs/img/aura_logo.svg" width="110" height="110" alt="Aura Logo" />
+</p>
 
-|         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
-| ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| CI/CD   | [![Tests](https://github.com/deepset-ai/haystack/actions/workflows/tests.yml/badge.svg)](https://github.com/deepset-ai/haystack/actions/workflows/tests.yml) [![types - Mypy](https://img.shields.io/badge/types-Mypy-blue.svg)](https://github.com/python/mypy) [![Coverage Status](https://coveralls.io/repos/github/deepset-ai/haystack/badge.svg?branch=main)](https://coveralls.io/github/deepset-ai/haystack?branch=main) [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff) |
-| Docs    | [![Website](https://img.shields.io/website?label=documentation&up_message=online&url=https%3A%2F%2Fdocs.haystack.deepset.ai)](https://docs.haystack.deepset.ai)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
-| Package | [![PyPI](https://img.shields.io/pypi/v/haystack-ai)](https://pypi.org/project/haystack-ai/) ![PyPI - Downloads](https://img.shields.io/pypi/dm/haystack-ai?color=blue&logo=pypi&logoColor=gold) ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/haystack-ai?logo=python&logoColor=gold) [![Conda Version](https://img.shields.io/conda/vn/conda-forge/haystack-ai.svg)](https://anaconda.org/conda-forge/haystack-ai) [![GitHub](https://img.shields.io/github/license/deepset-ai/haystack?color=blue)](LICENSE) [![License Compliance](https://github.com/deepset-ai/haystack/actions/workflows/license_compliance.yml/badge.svg)](https://github.com/deepset-ai/haystack/actions/workflows/license_compliance.yml) |
-| Meta    | [![Discord](https://img.shields.io/discord/993534733298450452?logo=discord)](https://discord.com/invite/xYvH6drSmA) [![Twitter Follow](https://img.shields.io/twitter/follow/haystack_ai)](https://twitter.com/haystack_ai)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
-</div>
+<h1 align="center">⚡ Aura — High-Performance RAG & LLM Orchestration Framework</h1>
 
-[Haystack](https://haystack.deepset.ai/) is an end-to-end LLM framework that allows you to build applications powered by
-LLMs, Transformer models, vector search and more. Whether you want to perform retrieval-augmented generation (RAG),
-document search, question answering or answer generation, Haystack can orchestrate state-of-the-art embedding models
-and LLMs into pipelines to build end-to-end NLP applications and solve your use case.
+<p align="center">
+  <strong>Advanced LLM orchestration and high-performance Retrieval-Augmented Generation (RAG) pipeline architecture.</strong>
+</p>
 
-## Table of Contents
+<p align="center">
+  <a href="https://www.python.org"><img src="https://img.shields.io/badge/Python-3.9+-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python" /></a>
+  <a href="https://pytorch.org"><img src="https://img.shields.io/badge/PyTorch-2.0+-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white" alt="PyTorch" /></a>
+  <a href="https://fastapi.tiangolo.com"><img src="https://img.shields.io/badge/FastAPI-Production%20Ready-009688?style=for-the-badge&logo=fastapi&logoColor=white" alt="FastAPI" /></a>
+  <a href="https://opentelemetry.io"><img src="https://img.shields.io/badge/OpenTelemetry-Native%20Tracing-4A154B?style=for-the-badge&logo=opentelemetry&logoColor=white" alt="OpenTelemetry" /></a>
+  <a href="https://github.com/SHAZAAN25/Aura/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg?style=for-the-badge" alt="License" /></a>
+  <a href="https://github.com/SHAZAAN25/Aura"><img src="https://img.shields.io/badge/Status-Active%20Maintained-success?style=for-the-badge" alt="Status" /></a>
+</p>
 
-- [Installation](#installation)
-- [Documentation](#documentation)
-- [Features](#features)
-- [Use Cases](#features)
-- [Hayhooks (REST API Deployment)](#-tip-1)
-- [Haystack Enterprise](#haystack-enterprise-best-practices-and-expert-support)
-- [deepset Studio](#-deepset-studio-your-development-environment-for-haystack)
-- [Telemetry](#telemetry)
-- [🖖 Community](#-community)
-- [Contributing to Haystack](#contributing-to-haystack)
-- [Who Uses Haystack](#who-uses-haystack)
+<p align="center">
+  <em>"Connect models, vector databases, and document transformers into resilient, production-grade intelligence pipelines."</em>
+</p>
 
+---
 
-## Installation
+## 👨‍💼 Leadership & Credits
 
-The simplest way to get Haystack is via pip:
+> **Project Architected and Maintained by [Mohammed Shazaan Aarish](https://github.com/SHAZAAN25)**  
+> *Engineered to deliver modular, transparent, and scalable LLM orchestration, hybrid retrieval-augmented generation (RAG), and deterministic graph pipeline execution for production AI systems.*
 
-```sh
+---
+
+## ⚡ Core Engineering Philosophy & Architectural Tenets
+
+Modern generative AI applications require more than chained prompt strings. Production-grade systems demand deterministic data flow, type validation, fault tolerance, and deep observability across every inference step.
+
+**Aura is built on five core architectural tenets:**
+
+1. **Explicit Directed Graph (DAG) Pipelines**: Aura models workflows as deterministic directed acyclic graphs. Components declare strict input and output type contracts (`@component.output_types`), preventing runtime type mismatches and silent prompt leakage.
+2. **Provider & Vendor Agnostic Orchestration**: Zero proprietary lock-in. Seamlessly swap between OpenAI, Anthropic Claude, Google Gemini, Cohere, Hugging Face, or local inference engines (Ollama, vLLM, TensorRT-LLM) by updating a single pipeline node.
+3. **Multi-Stage Hybrid RAG & Re-Ranking**: Overcomes traditional semantic retrieval pitfalls by combining dense vector embeddings with sparse BM25 lexical search, dynamic reciprocate rank fusion (RRF), and cross-encoder similarity rankers.
+4. **Autonomous Agentic Loops with Schema Enforcement**: Multi-step reasoning loops featuring deterministic JSON Schema validation, tool function calling, dynamic short/long-term memory buffers, and graceful error recovery.
+5. **Production Observability & Declarative Serialization**: Native OpenTelemetry distributed tracing across all pipeline steps, structured logging, and instant pipeline export/import using declarative YAML/JSON specifications.
+
+---
+
+## 🏛️ System Architecture
+
+```mermaid
+graph TD
+    subgraph Ingestion [1. Document Ingestion Pipeline]
+        DOCS[Unstructured Raw Data\nPDF, DOCX, MD, HTML, PPTX] --> CONV[Document Converters & OCR]
+        CONV --> CLEAN[Document Cleaners & Splitters]
+        CLEAN --> EMB_DOC[Dense Document Embedders\nOpenAI / SentenceTransformers]
+        EMB_DOC --> VEC_DB[(Vector Store & Index\nQdrant / Chroma / Pinecone / pgvector)]
+    end
+
+    subgraph Query [2. Hybrid RAG & Inference Pipeline]
+        USER[User Query / Prompt] --> EMB_Q[Text Embedder]
+        USER --> BM25[Sparse BM25 Keyword Search]
+        EMB_Q --> DENSE_RET[Dense Semantic Retriever]
+        VEC_DB -.-> DENSE_RET
+        VEC_DB -.-> BM25
+        DENSE_RET --> FUSION[Reciprocal Rank Fusion / Ranker]
+        BM25 --> FUSION
+        FUSION --> RANK[Cross-Encoder Similarity Re-ranker]
+        RANK --> PROMPT[Context-Aware Dynamic PromptBuilder]
+        PROMPT --> LLM[LLM Generator\nGPT-4o / Claude 3.5 / Gemini / LLaMA 3]
+        LLM --> RESP[Validated Stream / Structured Response]
+    end
+
+    subgraph Agents [3. Agentic & Tool Execution Runtime]
+        AGENT[Autonomous Agent Orchestrator] --> REASON[ReAct Reasoning Loop]
+        REASON --> TOOLS[Tool & OpenAPI Connectors]
+        TOOLS --> EXEC[API / DB / Custom Function]
+        EXEC --> REASON
+        REASON --> AGENT_OUT[Final Resolution]
+    end
+```
+
+---
+
+## 🌟 Key Framework Capabilities
+
+### 🧠 Multi-Provider LLM Generators
+- Native interfaces for **OpenAI** (`OpenAIGenerator`, `OpenAIChatGenerator`), **Anthropic**, **Cohere**, and **Google Gemini**.
+- First-class support for open-source self-hosted models via **Hugging Face**, **Ollama**, and **vLLM**.
+- Deterministic response formatting via JSON Schema validation and structured outputs.
+
+### 🔍 Hybrid Vector Search & Storage Engines
+- Plug-and-play integrations with industry-standard vector databases:
+  - **Qdrant**, **Pinecone**, **Chroma**, **OpenSearch**, **Milvus**, **Weaviate**, **pgvector (PostgreSQL)**, and **In-Memory Store**.
+- Hybrid search fusing dense embedding vectors with sparse BM25 lexical matching to achieve peak retrieval accuracy.
+
+### 📄 Enterprise Document Ingestion & Parsers
+- Native converters for diverse formats: **PDF** (PyPDF, PDFMiner, Azure Form Recognizer OCR), **DOCX**, **PPTX**, **HTML** (Trafilatura), **XLSX**, **Markdown**, and **JSON**.
+- Granular text chunking via **Character**, **Word**, **Sentence**, **NLTK**, and **Recursive Token** splitters.
+
+### 🤖 Autonomous Agents & Function Calling
+- Dynamic agentic execution with schema-enforced tool execution.
+- Auto-generate tool definitions directly from standard Python functions or **OpenAPI** service specifications.
+- Memory management and context window optimization for continuous multi-turn dialogue.
+
+### 📊 Evaluation & Guardrails Engine
+- Quantitative evaluation metrics: **Context Recall**, **Context Precision**, **Faithfulness**, and **Semantic Answer Similarity**.
+- Automated validation gates preventing hallucinations before answers reach downstream users.
+
+### 🚀 REST API Deployment via Hayhooks
+- Wrap any Aura pipeline into a production-ready **FastAPI** REST microservice in seconds.
+- Fully compatible with OpenAI-compatible API schemas and front-end chat interfaces.
+
+---
+
+## ⚙️ Component & Pipeline Engine Specifications
+
+| Component Category | Supported Technologies / Providers | Primary Engineering Function |
+| :--- | :--- | :--- |
+| **Generators** | OpenAI, Anthropic, Gemini, Cohere, HuggingFace, Ollama | Multi-model text and chat completion with streaming |
+| **Embedders** | SentenceTransformers, OpenAI, HuggingFace Hub, Cohere | Dense vector embedding generation for text and documents |
+| **Document Stores** | In-Memory, Qdrant, Chroma, Pinecone, OpenSearch, pgvector | Vector indexing, hybrid search, document persistence |
+| **Retrievers** | Dense Embedding Retrievers, BM25 Keyword Retrievers | Candidate document retrieval with metadata filtering |
+| **Rankers** | SentenceTransformers, Cohere Re-ranker, Diversity Ranker | Cross-encoder contextual re-scoring and redundancy filtering |
+| **Converters & Splitters** | PyPDF, Trafilatura, python-docx, NLTK, Tiktoken | Raw file ingestion, text extraction, semantic chunking |
+| **Agents & Tools** | ReAct Agent, Tool, OpenAPIServiceConnector | Autonomous multi-step problem solving & tool calling |
+| **Observability** | OpenTelemetry, Datadog, Structlog | End-to-end distributed tracing, latency profiling, metrics |
+
+---
+
+## 📂 Repository Structure
+
+```
+Aura/
+├── haystack/                    # Core Aura Engine Framework
+│   ├── components/              # Modular Pipeline Components
+│   │   ├── builders/            # PromptBuilder, ChatPromptBuilder, AnswerBuilder
+│   │   ├── converters/          # PyPDF, DOCX, HTML, Markdown, Tika, OCR
+│   │   ├── embedders/           # OpenAI, SentenceTransformers text & doc embedders
+│   │   ├── generators/          # LLM interfaces (OpenAI, HuggingFace, Chat)
+│   │   ├── rankers/             # TransformersSimilarityRanker, DiversityRanker
+│   │   ├── retrievers/          # In-Memory, Dense, BM25, and Vector retrievers
+│   │   ├── routers/             # Conditional branching & language routers
+│   │   ├── splitters/           # NLTK, Recursive, and Character text splitters
+│   │   └── tools/               # Agent Tool wrappers & OpenAPI connectors
+│   ├── core/                    # Core Directed Graph Pipeline Engine
+│   │   ├── pipeline/            # Pipeline DAG graph execution & validation
+│   │   └── serialization/       # Declarative YAML & JSON export/import
+│   ├── dataclasses/             # Document, ChatMessage, Tool, ByteStream
+│   └── tracing/                 # OpenTelemetry and Datadog telemetry hooks
+├── docs/                        # Technical Documentation & Architectural Guides
+│   └── img/                     # High-resolution logos, banners, diagrams
+├── examples/                    # End-to-end reference implementations & notebooks
+├── test/                        # Rigorous unit, integration, and e2e test suites
+├── pyproject.toml               # Build system, dependencies, and package metadata
+├── CITATION.cff                 # Academic citation and metadata
+├── CONTRIBUTING.md              # Engineering guidelines and pull request standards
+├── LICENSE                      # Apache License 2.0
+└── README.md                    # Project documentation
+```
+
+---
+
+## 🚀 Quickstart & Setup
+
+### Prerequisites
+- Python 3.9, 3.10, 3.11, or 3.12
+- `pip` or [`uv`](https://github.com/astral-sh/uv) package manager
+- (Optional) Docker for containerized vector store deployment
+
+### 1. Installation
+
+Install the package directly:
+```bash
 pip install haystack-ai
 ```
 
-Install from the `main` branch to try the newest features:
-```sh
-pip install git+https://github.com/deepset-ai/haystack.git@main
+Or install in editable mode for local development:
+```bash
+git clone https://github.com/SHAZAAN25/Aura.git
+cd Aura
+pip install -e ".[test]"
 ```
 
-Haystack supports multiple installation methods including Docker images. For a comprehensive guide please refer
-to the [documentation](https://docs.haystack.deepset.ai/docs/installation).
+### 2. Building Your First Hybrid RAG Pipeline
 
-## Documentation
+Here is a complete, runnable example demonstrating how to index documents and query them using an end-to-end RAG pipeline:
 
-If you're new to the project, check out ["What is Haystack?"](https://haystack.deepset.ai/overview/intro) then go
-through the ["Get Started Guide"](https://haystack.deepset.ai/overview/quick-start) and build your first LLM application
-in a matter of minutes. Keep learning with the [tutorials](https://haystack.deepset.ai/tutorials). For more advanced
-use cases, or just to get some inspiration, you can browse our Haystack recipes in the
-[Cookbook](https://haystack.deepset.ai/cookbook).
+```python
+from haystack import Pipeline, Document
+from haystack.document_stores.in_memory import InMemoryDocumentStore
+from haystack.components.embedders import OpenAITextEmbedder, OpenAIDocumentEmbedder
+from haystack.components.retrievers.in_memory import InMemoryEmbeddingRetriever
+from haystack.components.builders import PromptBuilder
+from haystack.components.generators import OpenAIGenerator
 
-At any given point, hit the [documentation](https://docs.haystack.deepset.ai/docs/intro) to learn more about Haystack, what can it do for you and the technology behind.
+# 1. Initialize Document Store & Ingest Knowledge
+document_store = InMemoryDocumentStore()
+docs = [
+    Document(content="Aura is a high-performance LLM orchestration and RAG framework architected by Mohammed Shazaan Aarish."),
+    Document(content="Aura features explicit directed graph pipelines, hybrid search, and native OpenTelemetry distributed tracing."),
+    Document(content="Aura allows zero-friction model swapping across OpenAI, Anthropic, Gemini, Cohere, and local vLLM instances.")
+]
 
-## Features
+# 2. Embed and Write Documents
+doc_embedder = OpenAIDocumentEmbedder(model="text-embedding-3-small")
+docs_with_embeddings = doc_embedder.run(documents=docs)["documents"]
+document_store.write_documents(docs_with_embeddings)
 
-- **Technology agnostic:** Allow users the flexibility to decide what vendor or technology they want and make it easy to switch out any component for another. Haystack allows you to use and compare models available from OpenAI, Cohere and Hugging Face, as well as your own local models or models hosted on Azure, Bedrock and SageMaker.
-- **Explicit:** Make it transparent how different moving parts can “talk” to each other so it's easier to fit your tech stack and use case.
-- **Flexible:** Haystack provides all tooling in one place: database access, file conversion, cleaning, splitting, training, eval, inference, and more. And whenever custom behavior is desirable, it's easy to create custom components.
-- **Extensible:** Provide a uniform and easy way for the community and third parties to build their own components and foster an open ecosystem around Haystack.
+# 3. Construct the RAG Pipeline Graph
+rag_pipeline = Pipeline()
+rag_pipeline.add_component("text_embedder", OpenAITextEmbedder(model="text-embedding-3-small"))
+rag_pipeline.add_component("retriever", InMemoryEmbeddingRetriever(document_store=document_store, top_k=2))
 
-Some examples of what you can do with Haystack:
+template = """
+Answer the question based strictly on the provided context:
+Context:
+{% for doc in documents %}
+  {{ doc.content }}
+{% endfor %}
 
--   Build **retrieval augmented generation (RAG)** by making use of one of the available vector databases and customizing your LLM interaction, the sky is the limit 🚀
--   Perform Question Answering **in natural language** to find granular answers in your documents.
--   Perform **semantic search** and retrieve documents according to meaning.
--   Build applications that can make complex decisions making to answer complex queries: such as systems that can resolve complex customer queries, do knowledge search on many disconnected resources and so on.
--   Scale to millions of docs using retrievers and production-scale components.
--   Use **off-the-shelf models** or **fine-tune** them to your data.
--   Use **user feedback** to evaluate, benchmark, and continuously improve your models.
+Question: {{ query }}
+Answer:
+"""
+rag_pipeline.add_component("prompt_builder", PromptBuilder(template=template))
+rag_pipeline.add_component("llm", OpenAIGenerator(model="gpt-4o-mini"))
 
-> [!TIP]
->
-> Would you like to deploy and serve Haystack pipelines as REST APIs yourself? [Hayhooks](https://github.com/deepset-ai/hayhooks) provides a simple way to wrap your pipelines with custom logic and expose them via HTTP endpoints, including OpenAI-compatible chat completion endpoints and compatibility with fully-featured chat interfaces like [open-webui](https://openwebui.com/).
+# 4. Connect the Pipeline Sockets
+rag_pipeline.connect("text_embedder.embedding", "retriever.query_embedding")
+rag_pipeline.connect("retriever.documents", "prompt_builder.documents")
+rag_pipeline.connect("prompt_builder.prompt", "llm.prompt")
 
-## Haystack Enterprise: Best Practices and Expert Support
+# 5. Execute Pipeline Query
+query = "Who architected Aura and what are its key capabilities?"
+results = rag_pipeline.run({
+    "text_embedder": {"text": query},
+    "prompt_builder": {"query": query}
+})
 
-Get expert support from the Haystack team, build faster with enterprise-grade templates, and scale securely with deployment guides for cloud and on-prem environments - all with **Haystack Enterprise**. Read more about it our [announcement post](https://haystack.deepset.ai/blog/announcing-haystack-enterprise).
+print("⚡ Answer:", results["llm"]["replies"][0])
+```
 
-👉 [Get Haystack Enterprise](https://www.deepset.ai/products-and-services/haystack-enterprise?utm_source=github.com&utm_medium=referral&utm_campaign=haystack_enterprise) 
+### 3. Declarative Pipeline Serialization (YAML)
 
-## deepset Studio: Your Development Environment for Haystack
+Aura pipelines can be serialized into declarative YAML configurations for clean version-controlled deployments:
 
-Use **deepset Studio** to visually create, deploy, and test your Haystack pipelines. Learn more about it in our [announcement post](https://haystack.deepset.ai/blog/announcing-studio).
+```python
+# Export pipeline to YAML
+yaml_pipeline = rag_pipeline.dumps()
 
-![studio](https://github.com/user-attachments/assets/e4f09746-20b5-433e-8261-eca224ac23b3)
+# Save to disk or load on a remote cluster
+with open("rag_pipeline.yaml", "w") as f:
+    f.write(yaml_pipeline)
 
-👉 [Sign up](https://landing.deepset.ai/deepset-studio-signup)!
+# Load pipeline anywhere with zero code recreation
+loaded_pipeline = Pipeline.loads(yaml_pipeline)
+```
 
-> [!TIP]
-><img src="https://github.com/deepset-ai/haystack/raw/main/docs/img/deepset-platform-logo-alternative.jpeg"  width=20%>
->
-> Are you looking for a managed solution that benefits from Haystack? [deepset AI Platform](https://www.deepset.ai/products-and-services/deepset-ai-platform?utm_campaign=developer-relations&utm_source=haystack&utm_medium=readme) is our fully managed, end-to-end platform to integrate LLMs with your data, which uses Haystack for the LLM pipelines architecture.
+---
 
-## Telemetry
+## 🧪 Testing & Verification
 
-Haystack collects **anonymous** usage statistics of pipeline components. We receive an event every time these components are initialized. This way, we know which components are most relevant to our community.
+Aura maintains comprehensive test coverage across unit components, integration pipelines, and end-to-end workflows:
 
-Read more about telemetry in Haystack or how you can opt out in [Haystack docs](https://docs.haystack.deepset.ai/docs/telemetry).
+```bash
+# Run Unit Tests
+pytest test/core/pipeline/
 
-## 🖖 Community
+# Run Component Tests
+pytest test/components/
 
-If you have a feature request or a bug report, feel free to open an [issue in Github](https://github.com/deepset-ai/haystack/issues). We regularly check these and you can expect a quick response. If you'd like to discuss a topic, or get more general advice on how to make Haystack work for your project, you can start a thread in [Github Discussions](https://github.com/deepset-ai/haystack/discussions) or our [Discord channel](https://discord.com/invite/VBpFzsgRVF). We also check [𝕏 (Twitter)](https://twitter.com/haystack_ai) and [Stack Overflow](https://stackoverflow.com/questions/tagged/haystack).
+# Verify Static Types
+mypy haystack
 
-## Contributing to Haystack
+# Run Code Formatting and Linting Check
+ruff check .
+ruff format --check .
+```
 
-We are very open to the community's contributions - be it a quick fix of a typo, or a completely new feature! You don't need to be a Haystack expert to provide meaningful improvements. To learn how to get started, check out our [Contributor Guidelines](https://github.com/deepset-ai/haystack/blob/main/CONTRIBUTING.md) first.
+---
 
-There are several ways you can contribute to Haystack:
-- Contribute to the main Haystack project
-- Contribute an integration on [haystack-core-integrations](https://github.com/deepset-ai/haystack-core-integrations)
+## 🤝 Contributing
 
-> [!TIP]
->👉 **[Check out the full list of issues that are open to contributions](https://github.com/orgs/deepset-ai/projects/14)**
+We welcome contributions from engineers, researchers, and builders worldwide!
 
-## Who Uses Haystack
+1. **Fork the Repository** on GitHub: `https://github.com/SHAZAAN25/Aura`
+2. **Create a Feature Branch**: `git checkout -b feature/amazing-component`
+3. **Commit Your Changes**: Follow clear conventional commit conventions
+4. **Push to Your Branch**: `git push origin feature/amazing-component`
+5. **Open a Pull Request**: Detail your changes, test results, and motivation
 
-Here's a list of projects and companies using Haystack. Are you also using Haystack? Open a PR or [tell us your story](https://forms.gle/Mm3G1aEST3GAH2rn8).
+For comprehensive contribution guidelines, code formatting standards, and testing procedures, please refer to [CONTRIBUTING.md](CONTRIBUTING.md).
 
-- Tech & AI Innovators: [Apple](https://www.apple.com/), [Meta](https://www.meta.com/about), [Databricks](https://www.databricks.com/), [NVIDIA](https://developer.nvidia.com/blog/reducing-development-time-for-intelligent-virtual-assistants-in-contact-centers/), [PostHog](https://github.com/PostHog/max-ai#readme)
-- Public Sector: [German Federal Ministry of Research, Technology, and Space (BMFTR)](https://www.deepset.ai/case-studies/german-federal-ministry-research-technology-space-bmftr), [PD, Baden-Württemberg State](https://www.pd-g.de/)
-- Enterprise & Telecom: [Alcatel-Lucent](https://www.al-enterprise.com/), [Intel](https://github.com/intel/open-domain-question-and-answer#readme), [NOS Portugal](https://www.nos.pt/en/welcome), [TELUS Agriculture & Consumer Goods](https://www.telus.com/agcg/en)
-- Aerospace & Hardware: [Airbus](https://www.deepset.ai/case-studies/airbus), [Infineon](https://www.infineon.com/), [LEGO](https://github.com/larsbaunwall/bricky#readme)
-- Media & Entertainment: [Netflix](https://netflix.com), [Comcast](https://arxiv.org/html/2405.00801v2), [Zeit Online](https://www.deepset.ai/case-studies/zeit-online), [Rakuten](https://www.rakuten.com/)
-- Legal & Publishing: [Manz](https://www.deepset.ai/case-studies/manz), [Oxford University Press](https://corp.oup.com/)
-- Startups & Research: [YPulse](https://www.deepset.ai/case-studies/ypulse), [BetterUp](https://www.betterup.com/), [Intel Labs](https://github.com/IntelLabs/fastRAG#readme)
+---
+
+## 📜 License & Acknowledgments
+
+- Distributed under the **Apache License 2.0**. See [`LICENSE`](LICENSE) for complete terms.
+- Built with respect for foundational open-source components and the broader AI ecosystem.
+
+---
+
+<p align="center">
+  <b>⚡ Aura — High-Performance RAG & LLM Orchestration Framework</b><br>
+  Architected & Maintained with precision by <b><a href="https://github.com/SHAZAAN25">Mohammed Shazaan Aarish</a></b>
+</p>
