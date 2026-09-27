@@ -1,207 +1,206 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" width="100%" height="100%">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 470" width="100%" height="100%">
   <defs>
-    <!-- Background Gradient -->
-    <linearGradient id="bgGradAura" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#0B0F19"/>
-      <stop offset="100%" stop-color="#06090F"/>
-    </linearGradient>
+    <style>
+      .hdr { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif; font-size: 13px; font-weight: 700; fill: #F3F4F6; letter-spacing: 0.5px; }
+      .subhdr { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif; font-size: 11px; font-weight: 400; fill: #94A3B8; }
+      .pill { font-family: 'SF Mono', Monaco, Menlo, Consolas, monospace; font-size: 9.5px; font-weight: 600; }
+      .box-title { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif; font-size: 12px; font-weight: 600; fill: #F8FAFC; }
+      .box-desc { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif; font-size: 10px; font-weight: 400; fill: #94A3B8; }
+      .box-code { font-family: 'SF Mono', Monaco, Menlo, Consolas, monospace; font-size: 9.5px; font-weight: 500; fill: #818CF8; }
+    </style>
 
-    <!-- Card 1: Ingestion (Cyan/Teal) -->
-    <linearGradient id="cardIngest" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#0D2229"/>
-      <stop offset="100%" stop-color="#081419"/>
-    </linearGradient>
-
-    <!-- Card 2: Inference RAG (Purple/Violet) -->
-    <linearGradient id="cardRAG" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#1B1433"/>
-      <stop offset="100%" stop-color="#100C1F"/>
-    </linearGradient>
-
-    <!-- Card 3: Agents (Pink/Rose) -->
-    <linearGradient id="cardAgents" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#241224"/>
-      <stop offset="100%" stop-color="#140914"/>
-    </linearGradient>
-
-    <!-- Node Gradients -->
-    <linearGradient id="nodeCyan" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#10363F"/>
-      <stop offset="100%" stop-color="#0B242A"/>
-    </linearGradient>
-
-    <linearGradient id="nodePurple" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#2D1F52"/>
-      <stop offset="100%" stop-color="#1D1435"/>
-    </linearGradient>
-
-    <linearGradient id="nodePink" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#3D1836"/>
-      <stop offset="100%" stop-color="#260E21"/>
-    </linearGradient>
-
-    <!-- Arrow Markers -->
-    <marker id="arrowCyan" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-      <path d="M 0 1 L 9 5 L 0 9 z" fill="#00DFD8"/>
+    <marker id="arr-indigo" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 7 4 L 0 7 z" fill="#6366F1"/>
     </marker>
-    <marker id="arrowPurple" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-      <path d="M 0 1 L 9 5 L 0 9 z" fill="#A855F7"/>
+    <marker id="arr-cyan" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 7 4 L 0 7 z" fill="#38BDF8"/>
     </marker>
-    <marker id="arrowPink" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-      <path d="M 0 1 L 9 5 L 0 9 z" fill="#F43F5E"/>
+    <marker id="arr-emerald" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 7 4 L 0 7 z" fill="#10B981"/>
     </marker>
   </defs>
 
-  <!-- Container Box -->
-  <rect width="960" height="520" rx="16" fill="url(#bgGradAura)" stroke="#1F293D" stroke-width="1.5"/>
+  <!-- Canvas -->
+  <rect width="980" height="470" rx="12" fill="#0A0E17" stroke="#1E293B" stroke-width="1"/>
 
-  <!-- ==================== COLUMN 1: INGESTION PIPELINE ==================== -->
-  <rect x="24" y="24" width="280" height="472" rx="12" fill="url(#cardIngest)" stroke="#0E7490" stroke-width="1.2"/>
-  <rect x="24" y="24" width="280" height="38" rx="12" fill="#0E4E5F" stroke="#0E7490" stroke-width="1"/>
-  <rect x="24" y="50" width="280" height="12" fill="#0E4E5F"/>
-  <circle cx="44" cy="43" r="6" fill="#00DFD8"/>
-  <text x="58" y="47" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#E0F2FE" letter-spacing="0.5">1. DOCUMENT INGESTION</text>
+  <!-- ==================== STAGE 1: DOCUMENT INGESTION & INDEXING ==================== -->
+  <g transform="translate(24, 24)">
+    <rect width="280" height="422" rx="8" fill="#0F172A" stroke="#1E293B" stroke-width="1"/>
+    
+    <!-- Stage Header -->
+    <rect width="280" height="42" rx="8" fill="#131C31"/>
+    <rect y="34" width="280" height="8" fill="#131C31"/>
+    <line x1="0" y1="42" x2="280" y2="42" stroke="#1E293B" stroke-width="1"/>
+    <circle cx="18" cy="21" r="4" fill="#38BDF8"/>
+    <text x="30" y="25" class="hdr">1. INGESTION &amp; INDEXING</text>
+    <rect x="206" y="11" width="62" height="20" rx="4" fill="#0C344E"/>
+    <text x="237" y="24" class="pill" fill="#38BDF8" text-anchor="middle">OFFLINE</text>
 
-  <!-- Node 1: Raw Sources -->
-  <g transform="translate(42, 76)">
-    <rect width="244" height="48" rx="7" fill="url(#nodeCyan)" stroke="#0E7490" stroke-width="1"/>
-    <text x="122" y="22" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" font-weight="600" fill="#F0FDFA" text-anchor="middle">Unstructured Raw Data</text>
-    <text x="122" y="38" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#67E8F9" text-anchor="middle">PDF, DOCX, Markdown, HTML, PPTX</text>
-  </g>
-  <path d="M 164 124 L 164 144" stroke="#00DFD8" stroke-width="1.8" marker-end="url(#arrowCyan)"/>
+    <!-- Node 1: Raw Knowledge Ingestion -->
+    <g transform="translate(14, 56)">
+      <rect width="252" height="52" rx="6" fill="#1E293B" stroke="#334155" stroke-width="0.8"/>
+      <text x="12" y="20" class="box-title">Raw Knowledge Sources</text>
+      <text x="12" y="34" class="box-desc">PDF, Markdown, HTML, DOCX, TXT</text>
+      <text x="12" y="46" class="box-code">DocumentConverter &amp; OCR</text>
+    </g>
+    <path d="M 140 108 L 140 126" stroke="#38BDF8" stroke-width="1.2" marker-end="url(#arr-cyan)"/>
 
-  <!-- Node 2: Converters & OCR -->
-  <g transform="translate(42, 148)">
-    <rect width="244" height="48" rx="7" fill="url(#nodeCyan)" stroke="#0E7490" stroke-width="1"/>
-    <text x="122" y="22" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" font-weight="600" fill="#F0FDFA" text-anchor="middle">Document Converters &amp; OCR</text>
-    <text x="122" y="38" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#67E8F9" text-anchor="middle">PyPDF, Trafilatura, Azure OCR</text>
-  </g>
-  <path d="M 164 196 L 164 216" stroke="#00DFD8" stroke-width="1.8" marker-end="url(#arrowCyan)"/>
+    <!-- Node 2: Semantic Chunker -->
+    <g transform="translate(14, 128)">
+      <rect width="252" height="52" rx="6" fill="#1E293B" stroke="#334155" stroke-width="0.8"/>
+      <text x="12" y="20" class="box-title">Semantic Text Splitter</text>
+      <text x="12" y="34" class="box-desc">Recursive / Token-based windowing</text>
+      <text x="12" y="46" class="box-code">overlap=50 tokens, chunk_size=384</text>
+    </g>
+    <path d="M 140 180 L 140 198" stroke="#38BDF8" stroke-width="1.2" marker-end="url(#arr-cyan)"/>
 
-  <!-- Node 3: Cleaners & Splitters -->
-  <g transform="translate(42, 220)">
-    <rect width="244" height="48" rx="7" fill="url(#nodeCyan)" stroke="#0E7490" stroke-width="1"/>
-    <text x="122" y="22" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" font-weight="600" fill="#F0FDFA" text-anchor="middle">Cleaners &amp; Token Splitters</text>
-    <text x="122" y="38" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#67E8F9" text-anchor="middle">Sentence, Recursive &amp; NLTK Chunks</text>
-  </g>
-  <path d="M 164 268 L 164 288" stroke="#00DFD8" stroke-width="1.8" marker-end="url(#arrowCyan)"/>
+    <!-- Node 3: Document Embedder -->
+    <g transform="translate(14, 200)">
+      <rect width="252" height="52" rx="6" fill="#1E293B" stroke="#334155" stroke-width="0.8"/>
+      <text x="12" y="20" class="box-title">Dense Document Embedder</text>
+      <text x="12" y="34" class="box-desc">Vectorizes tokenized passages</text>
+      <text x="12" y="46" class="box-code">SentenceTransformers / OpenAI</text>
+    </g>
+    <path d="M 140 252 L 140 270" stroke="#38BDF8" stroke-width="1.2" marker-end="url(#arr-cyan)"/>
 
-  <!-- Node 4: Dense Document Embedder -->
-  <g transform="translate(42, 292)">
-    <rect width="244" height="48" rx="7" fill="url(#nodeCyan)" stroke="#0E7490" stroke-width="1"/>
-    <text x="122" y="22" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" font-weight="600" fill="#F0FDFA" text-anchor="middle">Dense Document Embedders</text>
-    <text x="122" y="38" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#67E8F9" text-anchor="middle">OpenAI, SentenceTransformers, Cohere</text>
-  </g>
-  <path d="M 164 340 L 164 360" stroke="#00DFD8" stroke-width="1.8" marker-end="url(#arrowCyan)"/>
+    <!-- Node 4: Vector Store & Index -->
+    <g transform="translate(14, 272)">
+      <rect width="252" height="74" rx="6" fill="#0C2540" stroke="#0284C7" stroke-width="1"/>
+      <text x="12" y="22" class="box-title" fill="#38BDF8">Vector Store &amp; Persistence</text>
+      <text x="12" y="38" class="box-desc">HNSW Indexing + Metadata Filters</text>
+      <text x="12" y="52" class="box-desc">• Qdrant • Chroma • Pinecone • pgvector</text>
+      <text x="12" y="66" class="box-code">InMemoryDocumentStore (Dev)</text>
+    </g>
 
-  <!-- Node 5: Vector Store -->
-  <g transform="translate(42, 364)">
-    <rect width="244" height="60" rx="7" fill="#042F2E" stroke="#14B8A6" stroke-width="1.5"/>
-    <text x="122" y="26" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#2DD4BF" text-anchor="middle">Vector Store &amp; Index</text>
-    <text x="122" y="44" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#99F6E4" text-anchor="middle">Qdrant • Chroma • Pinecone • pgvector</text>
-  </g>
-
-
-  <!-- ==================== COLUMN 2: HYBRID RAG & INFERENCE ==================== -->
-  <rect x="328" y="24" width="340" height="472" rx="12" fill="url(#cardRAG)" stroke="#7C3AED" stroke-width="1.2"/>
-  <rect x="328" y="24" width="340" height="38" rx="12" fill="#4C1D95" stroke="#7C3AED" stroke-width="1"/>
-  <rect x="328" y="50" width="340" height="12" fill="#4C1D95"/>
-  <circle cx="348" cy="43" r="6" fill="#C084FC"/>
-  <text x="362" y="47" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#F3E8FF" letter-spacing="0.5">2. HYBRID RAG &amp; INFERENCE PIPELINE</text>
-
-  <!-- Query input -->
-  <g transform="translate(346, 76)">
-    <rect width="304" height="44" rx="7" fill="#3B1C66" stroke="#9333EA" stroke-width="1.2"/>
-    <text x="152" y="27" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#E9D5FF" text-anchor="middle">User Query / Prompt</text>
-  </g>
-
-  <!-- Dual Branch: Embedder + BM25 -->
-  <path d="M 420 120 L 420 144" stroke="#A855F7" stroke-width="1.8" marker-end="url(#arrowPurple)"/>
-  <path d="M 576 120 L 576 144" stroke="#A855F7" stroke-width="1.8" marker-end="url(#arrowPurple)"/>
-
-  <g transform="translate(346, 148)">
-    <rect width="144" height="52" rx="7" fill="url(#nodePurple)" stroke="#7C3AED" stroke-width="1"/>
-    <text x="72" y="24" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#FAF5FF" text-anchor="middle">Text Embedder</text>
-    <text x="72" y="40" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#D8B4FE" text-anchor="middle">Dense Query Vector</text>
-  </g>
-
-  <g transform="translate(506, 148)">
-    <rect width="144" height="52" rx="7" fill="url(#nodePurple)" stroke="#7C3AED" stroke-width="1"/>
-    <text x="72" y="24" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#FAF5FF" text-anchor="middle">BM25 Search</text>
-    <text x="72" y="40" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#D8B4FE" text-anchor="middle">Sparse Keyword Match</text>
-  </g>
-
-  <!-- Fusion / Ranker -->
-  <path d="M 420 200 L 498 224" stroke="#A855F7" stroke-width="1.8" marker-end="url(#arrowPurple)"/>
-  <path d="M 576 200 L 498 224" stroke="#A855F7" stroke-width="1.8" marker-end="url(#arrowPurple)"/>
-
-  <g transform="translate(346, 228)">
-    <rect width="304" height="46" rx="7" fill="url(#nodePurple)" stroke="#7C3AED" stroke-width="1"/>
-    <text x="152" y="22" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" font-weight="600" fill="#FAF5FF" text-anchor="middle">Reciprocal Rank Fusion &amp; Cross-Encoder</text>
-    <text x="152" y="38" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#D8B4FE" text-anchor="middle">TransformersSimilarityRanker / Cohere</text>
-  </g>
-  <path d="M 498 274 L 498 296" stroke="#A855F7" stroke-width="1.8" marker-end="url(#arrowPurple)"/>
-
-  <!-- PromptBuilder -->
-  <g transform="translate(346, 300)">
-    <rect width="304" height="46" rx="7" fill="url(#nodePurple)" stroke="#7C3AED" stroke-width="1"/>
-    <text x="152" y="22" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" font-weight="600" fill="#FAF5FF" text-anchor="middle">Context-Aware Dynamic PromptBuilder</text>
-    <text x="152" y="38" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#D8B4FE" text-anchor="middle">Jinja2 Template + Retrieved Document Chunks</text>
-  </g>
-  <path d="M 498 346 L 498 368" stroke="#A855F7" stroke-width="1.8" marker-end="url(#arrowPurple)"/>
-
-  <!-- LLM & Output -->
-  <g transform="translate(346, 372)">
-    <rect width="304" height="54" rx="7" fill="#431407" stroke="#EA580C" stroke-width="1.3"/>
-    <text x="152" y="24" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#FDBA74" text-anchor="middle">LLM Generator Engine</text>
-    <text x="152" y="42" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#FED7AA" text-anchor="middle">GPT-4o • Claude 3.5 • Gemini • LLaMA 3 • vLLM</text>
+    <!-- Bottom sync connector -->
+    <g transform="translate(14, 360)">
+      <rect width="252" height="48" rx="6" fill="#13231E" stroke="#059669" stroke-width="0.8"/>
+      <text x="126" y="20" class="pill" fill="#34D399" text-anchor="middle">INDEX READY FOR RETRIEVAL</text>
+      <text x="126" y="36" class="box-desc" text-anchor="middle">Dense vectors + sparse tokens cached</text>
+    </g>
   </g>
 
 
-  <!-- ==================== COLUMN 3: AGENTS & TOOLS ==================== -->
-  <rect x="692" y="24" width="244" height="472" rx="12" fill="url(#cardAgents)" stroke="#BE123C" stroke-width="1.2"/>
-  <rect x="692" y="24" width="244" height="38" rx="12" fill="#881337" stroke="#BE123C" stroke-width="1"/>
-  <rect x="692" y="50" width="244" height="12" fill="#881337"/>
-  <circle cx="712" cy="43" r="6" fill="#FB7185"/>
-  <text x="726" y="47" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#FFE4E6" letter-spacing="0.5">3. AGENTIC RUNTIME</text>
+  <!-- ==================== STAGE 2: HYBRID RETRIEVAL & FUSION ==================== -->
+  <g transform="translate(320, 24)">
+    <rect width="324" height="422" rx="8" fill="#0F172A" stroke="#1E293B" stroke-width="1"/>
+    
+    <!-- Stage Header -->
+    <rect width="324" height="42" rx="8" fill="#171A31"/>
+    <rect y="34" width="324" height="8" fill="#171A31"/>
+    <line x1="0" y1="42" x2="324" y2="42" stroke="#1E293B" stroke-width="1"/>
+    <circle cx="18" cy="21" r="4" fill="#818CF8"/>
+    <text x="30" y="25" class="hdr">2. HYBRID RETRIEVAL &amp; RERANK</text>
+    <rect x="246" y="11" width="66" height="20" rx="4" fill="#2E1065"/>
+    <text x="279" y="24" class="pill" fill="#A78BFA" text-anchor="middle">HYBRID</text>
 
-  <!-- Agent Orchestrator -->
-  <g transform="translate(710, 76)">
-    <rect width="208" height="56" rx="7" fill="url(#nodePink)" stroke="#E11D48" stroke-width="1"/>
-    <text x="104" y="24" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" font-weight="700" fill="#FFF1F2" text-anchor="middle">Autonomous Agent</text>
-    <text x="104" y="42" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#FDA4AF" text-anchor="middle">ReAct Multi-Step Loop</text>
+    <!-- Node 1: User Query -->
+    <g transform="translate(14, 56)">
+      <rect width="296" height="46" rx="6" fill="#1E293B" stroke="#4F46E5" stroke-width="1"/>
+      <text x="12" y="20" class="box-title">Incoming User Query</text>
+      <text x="12" y="34" class="box-desc">Natural language question or prompt</text>
+    </g>
+
+    <!-- Branching to Dense and BM25 -->
+    <path d="M 80 102 L 80 126" stroke="#6366F1" stroke-width="1.2" marker-end="url(#arr-indigo)"/>
+    <path d="M 244 102 L 244 126" stroke="#6366F1" stroke-width="1.2" marker-end="url(#arr-indigo)"/>
+
+    <!-- Path A: Dense Retrieval -->
+    <g transform="translate(14, 128)">
+      <rect width="140" height="74" rx="6" fill="#1E293B" stroke="#334155" stroke-width="0.8"/>
+      <text x="10" y="20" class="box-title">Dense Vector</text>
+      <text x="10" y="34" class="box-desc">Text Embedder</text>
+      <text x="10" y="48" class="box-desc">Cosine similarity</text>
+      <text x="10" y="64" class="box-code">top_k = 20</text>
+    </g>
+
+    <!-- Path B: Sparse BM25 Retrieval -->
+    <g transform="translate(170, 128)">
+      <rect width="140" height="74" rx="6" fill="#1E293B" stroke="#334155" stroke-width="0.8"/>
+      <text x="10" y="20" class="box-title">Sparse BM25</text>
+      <text x="10" y="34" class="box-desc">Keyword matching</text>
+      <text x="10" y="48" class="box-desc">Exact term recall</text>
+      <text x="10" y="64" class="box-code">top_k = 20</text>
+    </g>
+
+    <!-- Merge to Reciprocal Rank Fusion -->
+    <path d="M 84 202 L 162 222" stroke="#6366F1" stroke-width="1.2" marker-end="url(#arr-indigo)"/>
+    <path d="M 240 202 L 162 222" stroke="#6366F1" stroke-width="1.2" marker-end="url(#arr-indigo)"/>
+
+    <!-- Node 2: Reciprocal Rank Fusion -->
+    <g transform="translate(14, 226)">
+      <rect width="296" height="52" rx="6" fill="#1E293B" stroke="#334155" stroke-width="0.8"/>
+      <text x="12" y="20" class="box-title">Reciprocal Rank Fusion (RRF)</text>
+      <text x="12" y="34" class="box-desc">Fuses dense semantic hits + sparse lexical hits</text>
+      <text x="12" y="46" class="box-code">score = 1 / (60 + rank_dense) + 1 / (60 + rank_bm25)</text>
+    </g>
+    <path d="M 162 278 L 162 296" stroke="#6366F1" stroke-width="1.2" marker-end="url(#arr-indigo)"/>
+
+    <!-- Node 3: Cross-Encoder Reranker -->
+    <g transform="translate(14, 298)">
+      <rect width="296" height="56" rx="6" fill="#241B3B" stroke="#7C3AED" stroke-width="1"/>
+      <text x="12" y="20" class="box-title" fill="#C084FC">Cross-Encoder Similarity Reranker</text>
+      <text x="12" y="36" class="box-desc">Full cross-attention between Query &amp; Chunks</text>
+      <text x="12" y="50" class="box-code">TransformersSimilarityRanker (top_k=5)</text>
+    </g>
+
+    <!-- Output of Stage 2 -->
+    <g transform="translate(14, 368)">
+      <rect width="296" height="40" rx="6" fill="#1A182F" stroke="#4C1D95" stroke-width="0.8"/>
+      <text x="148" y="18" class="pill" fill="#C4B5FD" text-anchor="middle">TOP-K VALIDATED CHUNKS</text>
+      <text x="148" y="32" class="box-desc" text-anchor="middle">High relevance context ready for prompt</text>
+    </g>
   </g>
-  <path d="M 814 132 L 814 162" stroke="#F43F5E" stroke-width="1.8" marker-end="url(#arrowPink)"/>
 
-  <!-- Tools & OpenAPI -->
-  <g transform="translate(710, 166)">
-    <rect width="208" height="56" rx="7" fill="url(#nodePink)" stroke="#E11D48" stroke-width="1"/>
-    <text x="104" y="24" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" font-weight="700" fill="#FFF1F2" text-anchor="middle">Schema-Enforced Tools</text>
-    <text x="104" y="42" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#FDA4AF" text-anchor="middle">JSON Schema &amp; OpenAPI Spec</text>
-  </g>
-  <path d="M 814 222 L 814 252" stroke="#F43F5E" stroke-width="1.8" marker-end="url(#arrowPink)"/>
 
-  <!-- Execution & Resolution -->
-  <g transform="translate(710, 256)">
-    <rect width="208" height="66" rx="7" fill="#4C0519" stroke="#FB7185" stroke-width="1.3"/>
-    <text x="104" y="24" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" font-weight="700" fill="#FECDD3" text-anchor="middle">Execution &amp; Recovery</text>
-    <text x="104" y="42" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#FDA4AF" text-anchor="middle">Safe Sandboxed Function Calls</text>
-    <text x="104" y="56" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#FDA4AF" text-anchor="middle">Dynamic Context Buffer</text>
-  </g>
+  <!-- ==================== STAGE 3: CONTEXT-AUGMENTED INFERENCE ==================== -->
+  <g transform="translate(660, 24)">
+    <rect width="296" height="422" rx="8" fill="#0F172A" stroke="#1E293B" stroke-width="1"/>
+    
+    <!-- Stage Header -->
+    <rect width="296" height="42" rx="8" fill="#1C182A"/>
+    <rect y="34" width="296" height="8" fill="#1C182A"/>
+    <line x1="0" y1="42" x2="296" y2="42" stroke="#1E293B" stroke-width="1"/>
+    <circle cx="18" cy="21" r="4" fill="#10B981"/>
+    <text x="30" y="25" class="hdr">3. GENERATION &amp; SERVING</text>
+    <rect x="220" y="11" width="64" height="20" rx="4" fill="#064E3B"/>
+    <text x="252" y="24" class="pill" fill="#34D399" text-anchor="middle">OUTPUT</text>
 
-  <!-- Loopback arrow -->
-  <path d="M 918 289 C 940 289, 940 104, 918 104" fill="none" stroke="#FB7185" stroke-width="1.8" stroke-dasharray="4 3" marker-end="url(#arrowPink)"/>
+    <!-- Node 1: Dynamic Prompt Builder -->
+    <g transform="translate(14, 56)">
+      <rect width="268" height="64" rx="6" fill="#1E293B" stroke="#334155" stroke-width="0.8"/>
+      <text x="12" y="20" class="box-title">Dynamic PromptBuilder</text>
+      <text x="12" y="36" class="box-desc">Injects retrieved context into template</text>
+      <text x="12" y="52" class="box-code">Jinja2 Template + Documents + Query</text>
+    </g>
+    <path d="M 148 120 L 148 138" stroke="#10B981" stroke-width="1.2" marker-end="url(#arr-emerald)"/>
 
-  <!-- Serving badge in Agent col -->
-  <g transform="translate(710, 364)">
-    <rect width="208" height="68" rx="7" fill="#18181B" stroke="#3F3F46" stroke-width="1"/>
-    <text x="104" y="24" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#E4E4E7" text-anchor="middle">Hayhooks REST Server</text>
-    <text x="104" y="42" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#A1A1AA" text-anchor="middle">FastAPI ASGI Microservice</text>
-    <text x="104" y="56" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#A1A1AA" text-anchor="middle">OpenTelemetry Tracing</text>
-  </g>
+    <!-- Node 2: LLM Generator -->
+    <g transform="translate(14, 140)">
+      <rect width="268" height="84" rx="6" fill="#1E293B" stroke="#334155" stroke-width="0.8"/>
+      <text x="12" y="20" class="box-title">LLM Generator</text>
+      <text x="12" y="36" class="box-desc">Multi-provider model execution:</text>
+      <text x="12" y="50" class="box-desc">• OpenAI (GPT-4o, mini)</text>
+      <text x="12" y="64" class="box-desc">• Anthropic Claude 3.5 • Gemini</text>
+      <text x="12" y="78" class="box-code">Local: Ollama / vLLM / HuggingFace</text>
+    </g>
+    <path d="M 148 224 L 148 242" stroke="#10B981" stroke-width="1.2" marker-end="url(#arr-emerald)"/>
 
-  <!-- Bottom Global Note -->
-  <g transform="translate(24, 480)">
-    <text x="480" y="8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="500" fill="#64748B" text-anchor="middle">Aura DAG Pipeline Architecture • Explicit Socket Type Contracts • Deterministic Graph Execution</text>
+    <!-- Node 3: Grounded Output -->
+    <g transform="translate(14, 244)">
+      <rect width="268" height="64" rx="6" fill="#064E3B" stroke="#10B981" stroke-width="1"/>
+      <text x="12" y="22" class="box-title" fill="#A7F3D0">Grounded Response</text>
+      <text x="12" y="38" class="box-desc" fill="#D1FAE5">• Precise answer backed by source citations</text>
+      <text x="12" y="54" class="box-desc" fill="#D1FAE5">• Hallucination-suppressed output</text>
+    </g>
+
+    <!-- Node 4: REST API Serving via Hayhooks -->
+    <g transform="translate(14, 324)">
+      <rect width="268" height="84" rx="6" fill="#132D28" stroke="#059669" stroke-width="0.8"/>
+      <text x="12" y="20" class="box-title" fill="#34D399">Production REST Serving</text>
+      <text x="12" y="36" class="box-desc">Hayhooks FastAPI ASGI Server</text>
+      <text x="12" y="50" class="box-desc">OpenTelemetry Tracing &amp; Latency Profiling</text>
+      <text x="12" y="68" class="box-code">POST /rag/query • Docker Ready</text>
+    </g>
   </g>
 </svg>

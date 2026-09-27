@@ -1,11 +1,11 @@
 <p align="center">
-  <img src="docs/img/aura_logo.svg" width="110" height="110" alt="Aura Logo" />
+  <img src="docs/img/aura_logo.svg" width="96" height="96" alt="Aura Logo" />
 </p>
 
-<h1 align="center">⚡ Aura — High-Performance RAG & LLM Orchestration Framework</h1>
+<h1 align="center">⚡ Aura — High-Performance RAG Pipeline Architecture</h1>
 
 <p align="center">
-  <strong>Advanced LLM orchestration and high-performance Retrieval-Augmented Generation (RAG) pipeline architecture.</strong>
+  <strong>A modular Python framework engineered for high-precision Retrieval-Augmented Generation (RAG) pipelines, hybrid vector search, and grounded LLM orchestration.</strong>
 </p>
 
 <p align="center">
@@ -14,11 +14,10 @@
   <a href="https://fastapi.tiangolo.com"><img src="https://img.shields.io/badge/FastAPI-Production%20Ready-009688?style=for-the-badge&logo=fastapi&logoColor=white" alt="FastAPI" /></a>
   <a href="https://opentelemetry.io"><img src="https://img.shields.io/badge/OpenTelemetry-Native%20Tracing-4A154B?style=for-the-badge&logo=opentelemetry&logoColor=white" alt="OpenTelemetry" /></a>
   <a href="https://github.com/SHAZAAN25/Aura/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg?style=for-the-badge" alt="License" /></a>
-  <a href="https://github.com/SHAZAAN25/Aura"><img src="https://img.shields.io/badge/Status-Active%20Maintained-success?style=for-the-badge" alt="Status" /></a>
 </p>
 
 <p align="center">
-  <em>"Connect models, vector databases, and document transformers into resilient, production-grade intelligence pipelines."</em>
+  <em>"Ground every generation in validated context. Connect document stores, hybrid retrievers, and cross-encoders into deterministic RAG pipelines."</em>
 </p>
 
 ---
@@ -26,75 +25,71 @@
 ## 👨‍💼 Leadership & Credits
 
 > **Project Architected and Maintained by [Mohammed Shazaan Aarish](https://github.com/SHAZAAN25)**  
-> *Engineered to deliver modular, transparent, and scalable LLM orchestration, hybrid retrieval-augmented generation (RAG), and deterministic graph pipeline execution for production AI systems.*
+> *Engineered to deliver modular, transparent, and scalable Retrieval-Augmented Generation (RAG) pipelines with multi-provider LLM support, hybrid search, and production observability.*
 
 ---
 
-## ⚡ Core Engineering Philosophy & Architectural Tenets
+## ⚡ Core Engineering Philosophy
 
-Modern generative AI applications require more than chained prompt strings. Production-grade systems demand deterministic data flow, type validation, fault tolerance, and deep observability across every inference step.
+Most naive RAG implementations fail in production because they rely on simple top-k semantic vector similarity alone. When domain queries contain exact product SKUs, specific acronyms, or complex nuances, single-embedding retrievers return irrelevant chunks, leading directly to hallucinations.
 
-**Aura is built on five core architectural tenets:**
+**Aura addresses this through a three-stage RAG architecture:**
 
-1. **Explicit Directed Graph (DAG) Pipelines**: Aura models workflows as deterministic directed acyclic graphs. Components declare strict input and output type contracts (`@component.output_types`), preventing runtime type mismatches and silent prompt leakage.
-2. **Provider & Vendor Agnostic Orchestration**: Zero proprietary lock-in. Seamlessly swap between OpenAI, Anthropic Claude, Google Gemini, Cohere, Hugging Face, or local inference engines (Ollama, vLLM, TensorRT-LLM) by updating a single pipeline node.
-3. **Multi-Stage Hybrid RAG & Re-Ranking**: Overcomes traditional semantic retrieval pitfalls by combining dense vector embeddings with sparse BM25 lexical search, dynamic reciprocate rank fusion (RRF), and cross-encoder similarity rankers.
-4. **Autonomous Agentic Loops with Schema Enforcement**: Multi-step reasoning loops featuring deterministic JSON Schema validation, tool function calling, dynamic short/long-term memory buffers, and graceful error recovery.
-5. **Production Observability & Declarative Serialization**: Native OpenTelemetry distributed tracing across all pipeline steps, structured logging, and instant pipeline export/import using declarative YAML/JSON specifications.
+1. **Multi-Modal Document Ingestion & Chunking**: Raw files (PDFs, DOCX, Markdown, HTML) are normalized, cleaned, and split using semantic token-window algorithms with deliberate overlap to preserve sentence boundaries.
+2. **Hybrid Retrieval (Dense + Sparse Fusion)**: Queries are routed simultaneously through dense vector embeddings (cosine semantic matching) and sparse BM25 indexers (exact keyword matching), merged via Reciprocal Rank Fusion (RRF).
+3. **Cross-Encoder Context Reranking**: Candidate passages are scored against the query using deep cross-attention before hitting the prompt builder, ensuring only high-signal passages consume context window tokens.
+4. **Context-Grounded Generation**: Dynamic prompt templates strictly bound the LLM to provide cited answers based solely on verified context passages.
+5. **Declarative Pipeline Serialization & Tracing**: Every RAG pipeline can be exported to version-controlled YAML and deployed as an ASGI microservice with native OpenTelemetry tracing out of the box.
 
 ---
 
 ## 🏛️ System Architecture
 
 <p align="center">
-  <img src="docs/img/aura_architecture.svg" width="100%" alt="Aura System Architecture" />
+  <img src="docs/img/aura_architecture.svg" width="100%" alt="Aura RAG Pipeline Architecture" />
 </p>
 
 ---
 
-## 🌟 Key Framework Capabilities
+## 🌟 Key Capabilities
 
-### 🧠 Multi-Provider LLM Generators
-- Native interfaces for **OpenAI** (`OpenAIGenerator`, `OpenAIChatGenerator`), **Anthropic**, **Cohere**, and **Google Gemini**.
-- First-class support for open-source self-hosted models via **Hugging Face**, **Ollama**, and **vLLM**.
-- Deterministic response formatting via JSON Schema validation and structured outputs.
+### 🔍 Hybrid Retrieval & Reranking
+- **Dense Semantic Embeddings**: First-class support for `SentenceTransformers`, `OpenAI`, `Cohere`, and Hugging Face embedding endpoints.
+- **Sparse BM25 Keyword Search**: In-memory and distributed BM25 indexers for exact terminology recall.
+- **Cross-Encoder Rerankers**: Integrated `TransformersSimilarityRanker` and Cohere Rerank API to filter candidate pools down to the most relevant top-$k$ passages.
 
-### 🔍 Hybrid Vector Search & Storage Engines
-- Plug-and-play integrations with industry-standard vector databases:
-  - **Qdrant**, **Pinecone**, **Chroma**, **OpenSearch**, **Milvus**, **Weaviate**, **pgvector (PostgreSQL)**, and **In-Memory Store**.
-- Hybrid search fusing dense embedding vectors with sparse BM25 lexical matching to achieve peak retrieval accuracy.
+### 🗄️ Vector Database Adapters
+- Pluggable document stores with zero pipeline rewrites:
+  - **Qdrant**, **Pinecone**, **Chroma**, **OpenSearch**, **pgvector (PostgreSQL)**, and **Milvus**.
+  - Built-in `InMemoryDocumentStore` for instant local prototyping and unit testing.
 
-### 📄 Enterprise Document Ingestion & Parsers
-- Native converters for diverse formats: **PDF** (PyPDF, PDFMiner, Azure Form Recognizer OCR), **DOCX**, **PPTX**, **HTML** (Trafilatura), **XLSX**, **Markdown**, and **JSON**.
-- Granular text chunking via **Character**, **Word**, **Sentence**, **NLTK**, and **Recursive Token** splitters.
+### 📄 Document Parsers & Preprocessing
+- Native file converters: **PDF** (PyPDF, PDFMiner, Azure Form Recognizer OCR), **DOCX**, **PPTX**, **Markdown**, and **HTML** (Trafilatura).
+- Granular chunking: Recursive token-aware, sentence-boundary, and character splitters.
 
-### 🤖 Autonomous Agents & Function Calling
-- Dynamic agentic execution with schema-enforced tool execution.
-- Auto-generate tool definitions directly from standard Python functions or **OpenAPI** service specifications.
-- Memory management and context window optimization for continuous multi-turn dialogue.
+### 🤖 Multi-Provider LLM Generation
+- Seamless integration with **OpenAI** (GPT-4o, GPT-4o-mini), **Anthropic Claude 3.5**, **Google Gemini**, and local self-hosted inference engines via **Ollama**, **vLLM**, and **Hugging Face Transformers**.
+- Streaming completion support and structured JSON Schema validation.
 
-### 📊 Evaluation & Guardrails Engine
-- Quantitative evaluation metrics: **Context Recall**, **Context Precision**, **Faithfulness**, and **Semantic Answer Similarity**.
-- Automated validation gates preventing hallucinations before answers reach downstream users.
-
-### 🚀 REST API Deployment via Hayhooks
-- Wrap any Aura pipeline into a production-ready **FastAPI** REST microservice in seconds.
-- Fully compatible with OpenAI-compatible API schemas and front-end chat interfaces.
+### 🚀 Production Serving via Hayhooks
+- One-command deployment of any Aura RAG pipeline as a **FastAPI** REST microservice.
+- Native **OpenTelemetry** instrumentation tracking retrieval latency, token usage, and end-to-end trace waterfalls.
 
 ---
 
-## ⚙️ Component & Pipeline Engine Specifications
+## ⚙️ Component Matrix
 
-| Component Category | Supported Technologies / Providers | Primary Engineering Function |
-| :--- | :--- | :--- |
-| **Generators** | OpenAI, Anthropic, Gemini, Cohere, HuggingFace, Ollama | Multi-model text and chat completion with streaming |
-| **Embedders** | SentenceTransformers, OpenAI, HuggingFace Hub, Cohere | Dense vector embedding generation for text and documents |
-| **Document Stores** | In-Memory, Qdrant, Chroma, Pinecone, OpenSearch, pgvector | Vector indexing, hybrid search, document persistence |
-| **Retrievers** | Dense Embedding Retrievers, BM25 Keyword Retrievers | Candidate document retrieval with metadata filtering |
-| **Rankers** | SentenceTransformers, Cohere Re-ranker, Diversity Ranker | Cross-encoder contextual re-scoring and redundancy filtering |
-| **Converters & Splitters** | PyPDF, Trafilatura, python-docx, NLTK, Tiktoken | Raw file ingestion, text extraction, semantic chunking |
-| **Agents & Tools** | ReAct Agent, Tool, OpenAPIServiceConnector | Autonomous multi-step problem solving & tool calling |
-| **Observability** | OpenTelemetry, Datadog, Structlog | End-to-end distributed tracing, latency profiling, metrics |
+| Stage | Component | Supported Technologies | Primary Role |
+| :--- | :--- | :--- | :--- |
+| **Ingestion** | `DocumentConverter` | PyPDF, Trafilatura, python-docx, OCR | Extracts raw text and metadata from files |
+| **Ingestion** | `DocumentSplitter` | Recursive, NLTK, Tiktoken | Chunks long texts with configurable token overlap |
+| **Ingestion** | `DocumentEmbedder` | SentenceTransformers, OpenAI, Cohere | Generates dense vectors for document chunks |
+| **Storage** | `DocumentStore` | Qdrant, Chroma, Pinecone, pgvector, InMemory | Persists vectors and metadata for fast retrieval |
+| **Retrieval** | `EmbeddingRetriever` | Dense Vector Cosine Similarity | Retrieves semantically similar chunks |
+| **Retrieval** | `BM25Retriever` | Sparse Inverted Index | Retrieves exact keyword matches |
+| **Reranking** | `SimilarityRanker` | Cross-Encoders, Cohere Rerank | Re-scores candidate passages against the query |
+| **Prompting** | `PromptBuilder` | Jinja2 Templating Engine | Injects retrieved context into prompt safely |
+| **Generation** | `OpenAIGenerator` | GPT-4o, Claude, Gemini, Ollama, vLLM | Produces grounded answers backed by source facts |
 
 ---
 
@@ -103,40 +98,38 @@ Modern generative AI applications require more than chained prompt strings. Prod
 ```
 Aura/
 ├── haystack/                    # Core Aura Engine Framework
-│   ├── components/              # Modular Pipeline Components
-│   │   ├── builders/            # PromptBuilder, ChatPromptBuilder, AnswerBuilder
-│   │   ├── converters/          # PyPDF, DOCX, HTML, Markdown, Tika, OCR
-│   │   ├── embedders/           # OpenAI, SentenceTransformers text & doc embedders
-│   │   ├── generators/          # LLM interfaces (OpenAI, HuggingFace, Chat)
-│   │   ├── rankers/             # TransformersSimilarityRanker, DiversityRanker
-│   │   ├── retrievers/          # In-Memory, Dense, BM25, and Vector retrievers
+│   ├── components/              # Modular RAG Components
+│   │   ├── builders/            # Dynamic PromptBuilder & Jinja2 templates
+│   │   ├── converters/          # PyPDF, DOCX, HTML, Markdown, OCR parsers
+│   │   ├── embedders/           # Text & Document dense vector embedders
+│   │   ├── generators/          # LLM interfaces (OpenAI, Claude, Gemini, Ollama)
+│   │   ├── rankers/             # Cross-Encoder similarity rankers
+│   │   ├── retrievers/          # Dense embedding & sparse BM25 retrievers
 │   │   ├── routers/             # Conditional branching & language routers
-│   │   ├── splitters/           # NLTK, Recursive, and Character text splitters
-│   │   └── tools/               # Agent Tool wrappers & OpenAPI connectors
-│   ├── core/                    # Core Directed Graph Pipeline Engine
-│   │   ├── pipeline/            # Pipeline DAG graph execution & validation
-│   │   └── serialization/       # Declarative YAML & JSON export/import
+│   │   └── splitters/           # Recursive token & sentence text splitters
+│   ├── core/                    # Pipeline Engine & Declarative Serialization
+│   │   ├── pipeline/            # Graph execution & socket type validation
+│   │   └── serialization/       # YAML / JSON pipeline export & import
 │   ├── dataclasses/             # Document, ChatMessage, Tool, ByteStream
-│   └── tracing/                 # OpenTelemetry and Datadog telemetry hooks
-├── docs/                        # Technical Documentation & Architectural Guides
-│   └── img/                     # High-resolution logos, banners, diagrams
-├── examples/                    # End-to-end reference implementations & notebooks
-├── test/                        # Rigorous unit, integration, and e2e test suites
-├── pyproject.toml               # Build system, dependencies, and package metadata
-├── CITATION.cff                 # Academic citation and metadata
-├── CONTRIBUTING.md              # Engineering guidelines and pull request standards
+│   └── tracing/                 # OpenTelemetry and Datadog tracing hooks
+├── docs/                        # Architecture diagrams & documentation
+│   └── img/                     # Static SVG architecture & logos
+├── examples/                    # End-to-end RAG recipes & tutorials
+├── test/                        # Unit, integration, and e2e test suites
+├── pyproject.toml               # Build system, dependencies, and metadata
+├── CITATION.cff                 # Citation metadata
+├── CONTRIBUTING.md              # Contribution standards
 ├── LICENSE                      # Apache License 2.0
 └── README.md                    # Project documentation
 ```
 
 ---
 
-## 🚀 Quickstart & Setup
+## 🚀 Quickstart
 
 ### Prerequisites
 - Python 3.9, 3.10, 3.11, or 3.12
-- `pip` or [`uv`](https://github.com/astral-sh/uv) package manager
-- (Optional) Docker for containerized vector store deployment
+- `pip` or [`uv`](https://github.com/astral-sh/uv)
 
 ### 1. Installation
 
@@ -145,16 +138,16 @@ Install the package directly:
 pip install haystack-ai
 ```
 
-Or install in editable mode for local development:
+Or clone and install in editable mode:
 ```bash
 git clone https://github.com/SHAZAAN25/Aura.git
 cd Aura
 pip install -e ".[test]"
 ```
 
-### 2. Building Your First Hybrid RAG Pipeline
+### 2. Building a Production RAG Pipeline
 
-Here is a complete, runnable example demonstrating how to index documents and query them using an end-to-end RAG pipeline:
+Here is a complete, working example illustrating how to index documents and query them using an end-to-end RAG pipeline:
 
 ```python
 from haystack import Pipeline, Document
@@ -164,85 +157,85 @@ from haystack.components.retrievers.in_memory import InMemoryEmbeddingRetriever
 from haystack.components.builders import PromptBuilder
 from haystack.components.generators import OpenAIGenerator
 
-# 1. Initialize Document Store & Ingest Knowledge
+# 1. Initialize Document Store
 document_store = InMemoryDocumentStore()
-docs = [
-    Document(content="Aura is a high-performance LLM orchestration and RAG framework architected by Mohammed Shazaan Aarish."),
-    Document(content="Aura features explicit directed graph pipelines, hybrid search, and native OpenTelemetry distributed tracing."),
-    Document(content="Aura allows zero-friction model swapping across OpenAI, Anthropic, Gemini, Cohere, and local vLLM instances.")
+
+# 2. Ingest & Embed Knowledge Passages
+passages = [
+    Document(content="Aura is a high-performance RAG pipeline framework architected by Mohammed Shazaan Aarish."),
+    Document(content="Aura solves retrieval precision issues by combining dense vector search, BM25, and cross-encoder reranking."),
+    Document(content="Aura supports plug-and-play LLM providers including OpenAI, Anthropic, Gemini, and local Ollama/vLLM instances.")
 ]
 
-# 2. Embed and Write Documents
 doc_embedder = OpenAIDocumentEmbedder(model="text-embedding-3-small")
-docs_with_embeddings = doc_embedder.run(documents=docs)["documents"]
-document_store.write_documents(docs_with_embeddings)
+indexed_docs = doc_embedder.run(documents=passages)["documents"]
+document_store.write_documents(indexed_docs)
 
-# 3. Construct the RAG Pipeline Graph
+# 3. Assemble the RAG Pipeline
 rag_pipeline = Pipeline()
 rag_pipeline.add_component("text_embedder", OpenAITextEmbedder(model="text-embedding-3-small"))
 rag_pipeline.add_component("retriever", InMemoryEmbeddingRetriever(document_store=document_store, top_k=2))
 
-template = """
-Answer the question based strictly on the provided context:
+prompt_template = """
+You are a precise technical assistant. Answer the user's question using ONLY the provided context passages.
+If the answer is not contained in the context, state that clearly.
+
 Context:
 {% for doc in documents %}
-  {{ doc.content }}
+  - {{ doc.content }}
 {% endfor %}
 
 Question: {{ query }}
 Answer:
 """
-rag_pipeline.add_component("prompt_builder", PromptBuilder(template=template))
+rag_pipeline.add_component("prompt_builder", PromptBuilder(template=prompt_template))
 rag_pipeline.add_component("llm", OpenAIGenerator(model="gpt-4o-mini"))
 
-# 4. Connect the Pipeline Sockets
+# 4. Connect the Pipeline Components
 rag_pipeline.connect("text_embedder.embedding", "retriever.query_embedding")
 rag_pipeline.connect("retriever.documents", "prompt_builder.documents")
 rag_pipeline.connect("prompt_builder.prompt", "llm.prompt")
 
-# 5. Execute Pipeline Query
-query = "Who architected Aura and what are its key capabilities?"
-results = rag_pipeline.run({
+# 5. Execute the RAG Query
+query = "What is Aura and how does it improve retrieval precision?"
+result = rag_pipeline.run({
     "text_embedder": {"text": query},
     "prompt_builder": {"query": query}
 })
 
-print("⚡ Answer:", results["llm"]["replies"][0])
+print("⚡ Grounded Answer:\n", result["llm"]["replies"][0])
 ```
 
-### 3. Declarative Pipeline Serialization (YAML)
+### 3. Export Pipeline to Declarative YAML
 
-Aura pipelines can be serialized into declarative YAML configurations for clean version-controlled deployments:
+Pipelines can be saved as declarative YAML files for versioning and containerized deployments:
 
 ```python
-# Export pipeline to YAML
-yaml_pipeline = rag_pipeline.dumps()
+# Export pipeline to YAML string
+yaml_repr = rag_pipeline.dumps()
 
-# Save to disk or load on a remote cluster
 with open("rag_pipeline.yaml", "w") as f:
-    f.write(yaml_pipeline)
+    f.write(yaml_repr)
 
-# Load pipeline anywhere with zero code recreation
-loaded_pipeline = Pipeline.loads(yaml_pipeline)
+# Reload pipeline on another server without recreating code
+loaded_pipeline = Pipeline.loads(yaml_repr)
 ```
 
 ---
 
 ## 🧪 Testing & Verification
 
-Aura maintains comprehensive test coverage across unit components, integration pipelines, and end-to-end workflows:
-
 ```bash
-# Run Unit Tests
+# Run Core Pipeline Unit Tests
 pytest test/core/pipeline/
 
 # Run Component Tests
 pytest test/components/
 
-# Verify Static Types
+# Verify Types with Mypy
 mypy haystack
 
-# Run Code Formatting and Linting Check
+# Run Static Analysis & Formatting Checks
 ruff check .
 ruff format --check .
 ```
@@ -251,26 +244,25 @@ ruff format --check .
 
 ## 🤝 Contributing
 
-We welcome contributions from engineers, researchers, and builders worldwide!
+Contributions are welcome! Please follow these steps:
 
-1. **Fork the Repository** on GitHub: `https://github.com/SHAZAAN25/Aura`
-2. **Create a Feature Branch**: `git checkout -b feature/amazing-component`
-3. **Commit Your Changes**: Follow clear conventional commit conventions
-4. **Push to Your Branch**: `git push origin feature/amazing-component`
-5. **Open a Pull Request**: Detail your changes, test results, and motivation
+1. **Fork the Repository**: `https://github.com/SHAZAAN25/Aura`
+2. **Create a Feature Branch**: `git checkout -b feature/new-rag-component`
+3. **Commit Your Changes**: Follow conventional commits (`feat: add qdrant hybrid retriever`)
+4. **Push & Open a Pull Request**: Provide a clear explanation of your changes and test coverage
 
-For comprehensive contribution guidelines, code formatting standards, and testing procedures, please refer to [CONTRIBUTING.md](CONTRIBUTING.md).
+For detailed guidelines, see [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ---
 
-## 📜 License & Acknowledgments
+## 📜 License & Attribution
 
-- Distributed under the **Apache License 2.0**. See [`LICENSE`](LICENSE) for complete terms.
-- Built with respect for foundational open-source components and the broader AI ecosystem.
+- Distributed under the **Apache License 2.0**. See [`LICENSE`](LICENSE) for details.
+- Built with respect for foundational open-source components and the broader Python AI community.
 
 ---
 
 <p align="center">
-  <b>⚡ Aura — High-Performance RAG & LLM Orchestration Framework</b><br>
+  <b>⚡ Aura — High-Performance RAG Pipeline Architecture</b><br>
   Architected & Maintained with precision by <b><a href="https://github.com/SHAZAAN25">Mohammed Shazaan Aarish</a></b>
 </p>
