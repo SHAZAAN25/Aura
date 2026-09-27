@@ -46,37 +46,9 @@ Modern generative AI applications require more than chained prompt strings. Prod
 
 ## 🏛️ System Architecture
 
-```mermaid
-graph TD
-    subgraph Ingestion [1. Document Ingestion Pipeline]
-        DOCS[Unstructured Raw Data\nPDF, DOCX, MD, HTML, PPTX] --> CONV[Document Converters & OCR]
-        CONV --> CLEAN[Document Cleaners & Splitters]
-        CLEAN --> EMB_DOC[Dense Document Embedders\nOpenAI / SentenceTransformers]
-        EMB_DOC --> VEC_DB[(Vector Store & Index\nQdrant / Chroma / Pinecone / pgvector)]
-    end
-
-    subgraph Query [2. Hybrid RAG & Inference Pipeline]
-        USER[User Query / Prompt] --> EMB_Q[Text Embedder]
-        USER --> BM25[Sparse BM25 Keyword Search]
-        EMB_Q --> DENSE_RET[Dense Semantic Retriever]
-        VEC_DB -.-> DENSE_RET
-        VEC_DB -.-> BM25
-        DENSE_RET --> FUSION[Reciprocal Rank Fusion / Ranker]
-        BM25 --> FUSION
-        FUSION --> RANK[Cross-Encoder Similarity Re-ranker]
-        RANK --> PROMPT[Context-Aware Dynamic PromptBuilder]
-        PROMPT --> LLM[LLM Generator\nGPT-4o / Claude 3.5 / Gemini / LLaMA 3]
-        LLM --> RESP[Validated Stream / Structured Response]
-    end
-
-    subgraph Agents [3. Agentic & Tool Execution Runtime]
-        AGENT[Autonomous Agent Orchestrator] --> REASON[ReAct Reasoning Loop]
-        REASON --> TOOLS[Tool & OpenAPI Connectors]
-        TOOLS --> EXEC[API / DB / Custom Function]
-        EXEC --> REASON
-        REASON --> AGENT_OUT[Final Resolution]
-    end
-```
+<p align="center">
+  <img src="docs/img/aura_architecture.svg" width="100%" alt="Aura System Architecture" />
+</p>
 
 ---
 
