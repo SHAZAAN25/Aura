@@ -363,6 +363,11 @@ ignore = [
   # https://typing.python.org/en/latest/spec/distributing.html#import-conventions
   "PLC0414", # useless-import-alias,
   "PLC0415", # import-outside-top-level,
+  "EXE001",  # shebang-not-executable
+  "PLR0917", # too-many-positional-arguments
+  "ASYNC240",# blocking-pathlib-in-async
+  "PLC0207", # string-split-more-times-than-necessary
+  "PLW0108", # unnecessary-lambda
 ]
 
 [tool.ruff.lint.mccabe]
