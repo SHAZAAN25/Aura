@@ -293,7 +293,7 @@ disallow_incomplete_defs = false
 
 [tool.ruff]
 line-length = 120
-exclude = ["proposals"]
+exclude = ["proposals", "docs", "docs-website"]
 
 [tool.ruff.format]
 skip-magic-trailing-comma = true
