@@ -202,10 +202,7 @@ rag_pipeline.connect("prompt_builder.prompt", "llm.prompt")
 
 # 5. Execute the RAG Query
 query = "What is Aura and how does it improve retrieval precision?"
-result = rag_pipeline.run({
-    "text_embedder": {"text": query},
-    "prompt_builder": {"query": query}
-})
+result = rag_pipeline.run({"text_embedder": {"text": query}, "prompt_builder": {"query": query}})
 
 print("⚡ Grounded Answer:\n", result["llm"]["replies"][0])
 ```
