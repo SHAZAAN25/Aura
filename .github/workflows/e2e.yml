@@ -21,6 +21,7 @@ env:
   # we use HF_TOKEN instead of HF_API_TOKEN to work around a Hugging Face bug
   # see https://github.com/deepset-ai/haystack/issues/9552
   HF_TOKEN: ${{ secrets.HUGGINGFACE_API_KEY }}
+  CORE_DATADOG_API_KEY: ${{ secrets.CORE_DATADOG_API_KEY }}
 
 jobs:
   run:
@@ -40,7 +41,7 @@ jobs:
       run: hatch run e2e:test
 
     - name: Send event to Datadog
-      if: failure() && github.event_name == 'schedule' && secrets.CORE_DATADOG_API_KEY != ''
+      if: failure() && github.event_name == 'schedule' && env.CORE_DATADOG_API_KEY != ''
       uses: masci/datadog@v1
       with:
         api-key: ${{ secrets.CORE_DATADOG_API_KEY }}
