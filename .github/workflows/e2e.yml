@@ -34,13 +34,13 @@ jobs:
         python-version: "${{ env.PYTHON_VERSION }}"
 
     - name: Install Hatch
-      run: pip install hatch==${{ env.HATCH_VERSION }}
+      run: pip install hatch==${{ env.HATCH_VERSION }} "virtualenv<21"
 
     - name: Run tests
       run: hatch run e2e:test
 
     - name: Send event to Datadog
-      if: failure() && github.event_name == 'schedule'
+      if: failure() && github.event_name == 'schedule' && secrets.CORE_DATADOG_API_KEY != ''
       uses: masci/datadog@v1
       with:
         api-key: ${{ secrets.CORE_DATADOG_API_KEY }}

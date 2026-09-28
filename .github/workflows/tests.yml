@@ -46,7 +46,7 @@ jobs:
           python-version: "${{ env.PYTHON_VERSION }}"
 
       - name: Install Hatch
-        run: pip install hatch==${{ env.HATCH_VERSION }}
+        run: pip install hatch==${{ env.HATCH_VERSION }} "virtualenv<21"
 
       - name: Ruff - check format and linting
         run: hatch run fmt-check
@@ -66,7 +66,7 @@ jobs:
           fi
 
       - name: Send event to Datadog
-        if: (success() || failure()) && github.ref_name == 'main'
+        if: (success() || failure()) && github.ref_name == 'main' && secrets.CORE_DATADOG_API_KEY != ''
         uses: masci/datadog@v1
         with:
           api-key: ${{ secrets.CORE_DATADOG_API_KEY }}
@@ -96,7 +96,7 @@ jobs:
           python-version: "${{ env.PYTHON_VERSION }}"
 
       - name: Install Hatch
-        run: pip install hatch==${{ env.HATCH_VERSION }}
+        run: pip install hatch==${{ env.HATCH_VERSION }} "virtualenv<21"
 
       - name: Check imports
         run: hatch run python .github/utils/check_imports.py
@@ -113,7 +113,7 @@ jobs:
           fi
 
       - name: Send event to Datadog
-        if: (success() || failure()) && github.ref_name == 'main'
+        if: (success() || failure()) && github.ref_name == 'main' && secrets.CORE_DATADOG_API_KEY != ''
         uses: masci/datadog@v1
         with:
           api-key: ${{ secrets.CORE_DATADOG_API_KEY }}
@@ -155,7 +155,7 @@ jobs:
         id: hatch
         shell: bash
         run: |
-          pip install hatch==${{ env.HATCH_VERSION }}
+          pip install hatch==${{ env.HATCH_VERSION }} "virtualenv<21"
           echo "env=$(hatch env find test)" >> "$GITHUB_OUTPUT"
 
       - name: Run
@@ -189,7 +189,7 @@ jobs:
           fi
 
       - name: Send event to Datadog
-        if: (success() || failure()) && github.ref_name == 'main'
+        if: (success() || failure()) && github.ref_name == 'main' && secrets.CORE_DATADOG_API_KEY != ''
         uses: masci/datadog@v1
         with:
           api-key: ${{ secrets.CORE_DATADOG_API_KEY }}
@@ -237,7 +237,7 @@ jobs:
       - name: Install Hatch
         id: hatch
         run: |
-          pip install hatch==${{ env.HATCH_VERSION }}
+          pip install hatch==${{ env.HATCH_VERSION }} "virtualenv<21"
           echo "env=$(hatch env find test)" >> "$GITHUB_OUTPUT"
 
       - name: Mypy
@@ -264,7 +264,7 @@ jobs:
           fi
 
       - name: Send event to Datadog
-        if: (success() || failure()) && github.ref_name == 'main'
+        if: (success() || failure()) && github.ref_name == 'main' && secrets.CORE_DATADOG_API_KEY != ''
         uses: masci/datadog@v1
         with:
           api-key: ${{ secrets.CORE_DATADOG_API_KEY }}
@@ -299,7 +299,7 @@ jobs:
         id: hatch
         shell: bash
         run: |
-          pip install hatch==${{ env.HATCH_VERSION }}
+          pip install hatch==${{ env.HATCH_VERSION }} "virtualenv<21"
           echo "env=$(hatch env find test)" >> "$GITHUB_OUTPUT"
 
 
@@ -318,7 +318,7 @@ jobs:
           fi
 
       - name: Send event to Datadog
-        if: (success() || failure()) && github.ref_name == 'main'
+        if: (success() || failure()) && github.ref_name == 'main' && secrets.CORE_DATADOG_API_KEY != ''
         uses: masci/datadog@v1
         with:
           api-key: ${{ secrets.CORE_DATADOG_API_KEY }}
@@ -356,7 +356,7 @@ jobs:
         id: hatch
         shell: bash
         run: |
-          pip install hatch==${{ env.HATCH_VERSION }}
+          pip install hatch==${{ env.HATCH_VERSION }} "virtualenv<21"
           echo "env=$(hatch env find test)" >> "$GITHUB_OUTPUT"
 
       - uses: actions/cache/restore@v4
@@ -381,7 +381,7 @@ jobs:
           fi
 
       - name: Send event to Datadog
-        if: (success() || failure()) && github.ref_name == 'main'
+        if: (success() || failure()) && github.ref_name == 'main' && secrets.CORE_DATADOG_API_KEY != ''
         uses: masci/datadog@v1
         with:
           api-key: ${{ secrets.CORE_DATADOG_API_KEY }}
@@ -419,7 +419,7 @@ jobs:
         id: hatch
         shell: bash
         run: |
-          pip install hatch==${{ env.HATCH_VERSION }}
+          pip install hatch==${{ env.HATCH_VERSION }} "virtualenv<21"
           echo "env=$(hatch env find test)" >> "$GITHUB_OUTPUT"
 
       - name: Run
@@ -437,7 +437,7 @@ jobs:
           fi
 
       - name: Send event to Datadog
-        if: (success() || failure()) && github.ref_name == 'main'
+        if: (success() || failure()) && github.ref_name == 'main' && secrets.CORE_DATADOG_API_KEY != ''
         uses: masci/datadog@v1
         with:
           api-key: ${{ secrets.CORE_DATADOG_API_KEY }}
