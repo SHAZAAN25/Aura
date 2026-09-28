@@ -163,8 +163,12 @@ document_store = InMemoryDocumentStore()
 # 2. Ingest & Embed Knowledge Passages
 passages = [
     Document(content="Aura is a high-performance RAG pipeline framework architected by Mohammed Shazaan Aarish."),
-    Document(content="Aura solves retrieval precision issues by combining dense vector search, BM25, and cross-encoder reranking."),
-    Document(content="Aura supports plug-and-play LLM providers including OpenAI, Anthropic, Gemini, and local Ollama/vLLM instances.")
+    Document(
+        content="Aura solves retrieval precision issues by combining dense vector search, BM25, and cross-encoder reranking."
+    ),
+    Document(
+        content="Aura supports plug-and-play LLM providers including OpenAI, Anthropic, Gemini, and local Ollama/vLLM instances."
+    ),
 ]
 
 doc_embedder = OpenAIDocumentEmbedder(model="text-embedding-3-small")
